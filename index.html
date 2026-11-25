@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlushieStore - Toko Boneka Lucu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">🧸 PlushieStore</div>
+        <nav class="nav-links">
+            <button id="btn-sell" class="btn btn-secondary hidden" onclick="openModal('sell-modal')">+ Jual Boneka</button>
+            <button class="btn btn-outline" onclick="openModal('cart-modal')">
+                🛒 Keranjang (<span id="cart-count">0</span>)
+            </button>
+            <div id="auth-section">
+                <button class="btn btn-primary" onclick="openModal('login-modal')">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Banner Hero -->
+    <section class="hero">
+        <h1>Temukan Teman Peluk Terbaikmu!</h1>
+        <p>Koleksi boneka lembut, lucu, dan berkualitas tinggi untuk semua usia.</p>
+    </section>
+
+    <!-- Daftar Produk -->
+    <main class="container">
+        <h2>Katalog Boneka</h2>
+        <div id="product-list" class="product-grid">
+            <!-- Produk akan di-render oleh JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login-modal')">&times;</span>
+            <h2>Masuk ke Akun</h2>
+            <p class="subtitle">Login untuk mulai berbelanja atau menjual boneka.</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Masukkan nama pengguna" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Masukkan kata sandi" required>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">Masuk</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Jual Boneka -->
+    <div id="sell-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('sell-modal')">&times;</span>
+            <h2>Jual Boneka Baru</h2>
+            <form id="sell-form">
+                <div class="form-group">
+                    <label for="doll-name">Nama Boneka</label>
+                    <input type="text" id="doll-name" placeholder="Contoh: Beruang Coklat Jumbo" required>
+                </div>
+                <div class="form-group">
+                    <label for="doll-price">Harga (Rp)</label>
+                    <input type="number" id="doll-price" placeholder="Contoh: 120000" min="1000" required>
+                </div>
+                <div class="form-group">
+                    <label for="doll-image">URL Gambar Boneka</label>
+                    <input type="url" id="doll-image" placeholder="https://contoh.com/gambar.jpg" required>
+                    <small>Gunakan link gambar langsung (JPG/PNG/WebP).</small>
+                </div>
+                <button type="submit" class="btn btn-secondary full-width">Tambahkan ke Toko</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Keranjang Belanja -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content modal-lg">
+            <span class="close" onclick="closeModal('cart-modal')">&times;</span>
+            <h2>Keranjang Belanja</h2>
+            <div id="cart-items" class="cart-items">
+                <!-- Item keranjang akan di-render oleh JavaScript -->
+            </div>
+            <div class="cart-footer">
+                <h3>Total: <span id="cart-total">Rp 0</span></h3>
+                <button class="btn btn-primary" onclick="checkout()">Checkout Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
